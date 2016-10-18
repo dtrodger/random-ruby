@@ -1,0 +1,32 @@
+<div class="post">
+	<h1><%= @post.title %></h1>
+
+	<h3>Content</h3>
+	<p><%= @post.content %></p>
+	<%= erb :'partials/_vote', locals: {votable: @post} %>
+	<p class="vote-sum"><%= @post.vote_sum %></p>
+	<br>
+	<% if @post.author.id == auth_user.id %>
+		<form action="/posts/<%= @post.id %>" method='post'>
+			<input type='hidden' name='_method' value='delete'>
+			<input type='submit' value='delete'>
+		</form>
+	<% end %>
+</div>
+<h3>Comments</h3>
+
+<% if logged_in? %>
+	<a id="add-comment" href="/posts/<%= @post.id %>/comments/new">add comment</a>
+	<%= erb :'comments/new', layout: false, locals: { post: @post } %>
+<% end %>
+
+<div class="comment-list">
+	<% @post.comments.each do |comment| %>
+		<div class="comment">
+			<p><%= comment.content %></p>
+			<p><%= comment.author.username %></p>
+			<%= erb :'partials/_vote', locals: {votable: comment} %>
+			<br>
+		</div>
+	<% end %>
+</div>

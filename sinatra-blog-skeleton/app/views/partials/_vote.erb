@@ -1,0 +1,9 @@
+
+<form class='vote-form' action="/<%= votable.class.name.downcase %>s/<%= votable.id %>/votes" method='post'>
+	<input type='hidden' name='value' value='up'>
+	<input type='submit' value='upvote'>
+</form>
+<form class='vote-form' action="/<%= votable.class.name.downcase %>s/<%= votable.id %>/votes" method='post'>
+	<input type='hidden' name='value' value='down'>
+	<input type='submit' value='downvote'>
+</form>

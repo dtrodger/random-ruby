@@ -1,0 +1,8 @@
+<h1><%= auth_user.username %></h1>
+
+<h3>Comments</h3>
+
+<% auth_user.comments.each do |comment| %>
+	<p>post title: <%= comment.post.title %></p>
+	<p>comment: <%= comment.content %></p>
+<% end %>
