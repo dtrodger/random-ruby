@@ -1,0 +1,12 @@
+<article class="post" id="<%= post.id %>">
+  <form method="post" action='/posts/<%= post.id %>/vote' class="inline vote-form">
+    <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+  </form>
+  <h2><a href='/posts/<%= post.id %>'><%= post.title %></a></h2>
+  <p>
+    <span class='points'><%= post.points %></span>
+    <span class='username'><%= post.author.username %></span>
+    <span class='timestamp'><%= post.time_since_creation %></span>
+    <a class="delete" href='/posts/<%= post.id %>'></a>
+  </p>
+</article>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/application.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+
+  <title></title>
+</head>
+<body>
+  <header>
+    <% if logged_in? %>
+      <form action='/sessions' method='post'>
+        <input type='hidden' name='_method' value='delete'>
+        <input type='submit' value='Logout'>
+      </form>
+      <a href="/users/<%= auth_user.id %>"><%= auth_user.username %></a>
+    <% else %>
+      <a href='/sessions'>Login</a>
+      <a href='/users/new'>Register</a>
+    <% end %>
+  </header>
+  <%= erb :'partials/_errors' %>
+  <%= yield %>
+</body>
+</html>
